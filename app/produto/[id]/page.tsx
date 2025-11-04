@@ -9,7 +9,7 @@ interface ProdutoDetalhado {
   id: number;
   nome: string;
   descrição: string;
-  preço: number;
+  preco: number;
   url_foto_principal: string;
   categoria: string;
   estoque: number;
@@ -77,7 +77,7 @@ export default async function ProdutoDetalhePage({
             </p>
 
             <h2 className="text-3xl font-bold text-gray-800 mb-4">
-              R$ {produto.preço ? produto.preço.toFixed(2) : '0,00'}
+              R$ {produto.preco ? produto.preco.toFixed(2) : '0,00'}
             </h2>
             <p className="text-sm text-gray-500 mb-4">
               Estoque disponível: {produto.estoque} unidade(s)
