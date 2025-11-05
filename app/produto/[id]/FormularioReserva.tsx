@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react'; 
+import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 
 interface FormularioProps {
@@ -16,6 +17,30 @@ export default function FormularioReserva({ produtoId }: FormularioProps) {
 
   const [showTerms, setShowTerms] = useState(false);
   const [termsAgreed, setTermsAgreed] = useState(false);
+
+
+  const [countdown, setCountdown] = useState(5);
+  const router = useRouter();
+
+
+  useEffect(() => {
+ 
+    if (mensagem) {
+   
+      if (countdown === 0) {
+        router.push('/'); 
+        return;
+      }
+
+
+      const timer = setTimeout(() => {
+        setCountdown(countdown - 1); 
+      }, 1000);
+
+  
+      return () => clearTimeout(timer);
+    }
+  }, [mensagem, countdown, router]); 
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -47,9 +72,6 @@ export default function FormularioReserva({ produtoId }: FormularioProps) {
       setMensagem(
         'Reserva solicitada com sucesso! O setor de TI entrará em contato.'
       );
-      setNome('');
-      setSetor('');
-      setTermsAgreed(false);
     }
 
     setLoading(false);
@@ -60,11 +82,15 @@ export default function FormularioReserva({ produtoId }: FormularioProps) {
     setShowTerms(false);
   };
 
+
   if (mensagem) {
     return (
-      <p className="text-center font-bold text-green-600 bg-green-100 p-4 rounded-md">
-        {mensagem}
-      </p>
+      <div className="text-center p-6 rounded-lg bg-green-100 border border-green-300">
+        <p className="font-bold text-green-800 text-lg">{mensagem}</p>
+        <p className="text-gray-600 mt-2">
+          Redirecionando para a tela inicial em {countdown} segundos...
+        </p>
+      </div>
     );
   }
 
