@@ -48,6 +48,16 @@ export default function TermsWrapper({
 
   return (
     <main className="container mx-auto p-4 max-w-3xl py-12">
+
+      <div className="mb-6 p-4 border-2 border-red-700 bg-red-100 text-red-800 rounded-lg">
+        <h2 className="text-xl font-bold text-red-700 text-center">
+          ⚠️ AVISO IMPORTANTE ⚠️
+        </h2>
+        <p className="text-center font-semibold mt-2">
+          MÁQUINAS ADQUIRIDAS NO BAZAR NÃO PODERÃO SER REUTILIZADAS NO HOPR
+        </p>
+      </div>
+
       <div className="text-center mb-6">
         <div className="flex justify-center items-center gap-2">
           <svg
