@@ -92,7 +92,8 @@ export default function TermsWrapper({
         <section>
           <h3 className="font-bold text-lg">Forma de pagamento</h3>
           <p>
-            As vendas serão realizadas mediante pagamento à vista diretamente ao
+            As vendas serão realizadas mediante pagamento à vista, via PIX, 
+            débito ou cartão de crédito em até 3x, diretamente ao
             setor financeiro do Hospital.
           </p>
         </section>
